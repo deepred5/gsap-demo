@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./gsap.min.js"></script>
+  <style>
+    #canvas {
+      height: 80vh;
+      max-height: 300px;
+      overflow: visible;
+      border: solid 2px white;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas" width="300" height="300"></canvas>
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#28a92b";
+
+    let position = { x: 0, y: 0 };
+
+    function draw() {
+      // erase the canvas
+      ctx.clearRect(0, 0, 300, 300);
+      // redraw the square at it's new position
+      ctx.fillRect(position.x, position.y, 100, 100);
+    }
+
+    //animate x and y of point
+    gsap.to(position, {
+      x: 200,
+      y: 200,
+      duration: 4,
+      // unlike DOM elements, canvas needs to be redrawn and cleared on every tick
+      onUpdate: draw
+    });
+  </script>
+</body>
+
+</html>

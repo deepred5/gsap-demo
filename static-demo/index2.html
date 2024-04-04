@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo</title>
+  <script src="./gsap.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    svg {
+      height: 90vh;
+      max-height: 300px;
+      border: solid 2px white;
+      overflow: visible;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="btn">click</button>
+  <svg id="svg" viewBox="0 0 100 100">
+    <rect class="svgBox" fill="#28a92b" x="0" y="35" width="30" height="30" rx="2" />
+  </svg>
+  <script>
+    const btn = document.querySelector('#btn')
+
+    btn.addEventListener('click', () => {
+      gsap.to(".svgBox", {
+        duration: 2,
+        x: 100, // use transform shorthand (this is now using SVG units not px, the SVG viewBox is 100 units wide)
+        xPercent: -100,
+        // or target SVG attributes
+        attr: {
+          fill: '#8d3dae',
+          rx: 50,
+        },
+        repeat: 1,
+        yoyo: true,
+        repeatDelay: 1,
+      });
+    })
+  </script>
+
+  <script>
+    //create an object
+    let obj = { myNum: 10, myColor: "red" };
+
+    gsap.to(obj, {
+      myNum: 200,
+      myColor: "blue",
+      onUpdate: () => console.log(obj.myNum, obj.myColor),
+    });
+  </script>
+</body>
+
+</html>

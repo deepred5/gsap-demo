@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +22,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="box"></div>
   <button id="btn">click</button>
@@ -29,8 +31,9 @@
     const btn = document.querySelector('#btn')
 
     btn.addEventListener('click', () => {
-      gsap.to(".box", { rotation: '+=180'});
+      gsap.to(".box", { rotation: '+=180', duration: 3, backgroundColor: '#8d3dae', });
     })
   </script>
 </body>
+
 </html>
