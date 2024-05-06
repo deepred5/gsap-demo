@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./gsap.min.js"></script>
+  <script src="./ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger) 
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      /* 1920 的设计图，1rem = 100px */
+      font-size: calc(100 * 100vw / 1920);
+    }
+
+    #app {
+      /* width: 19.20rem;
+      height: 6000px;
+      max-width:100%;  */
+    }
+
+    .section1 {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .section1 img {
+      width: 100%;
+    }
+
+    .section2 {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 9.7rem;
+    }
+
+    .section2 img {
+      width: 100%;
+    }
+
+    .section3 {
+      position: absolute;
+      width: 1200px;
+      height: 500px;
+      border: 1px solid red;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 11.26rem;
+    }
+
+    .section3 .title1 {
+      width: 9.34rem;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+    }
+
+    .section3 .title2 {
+      width: 9.23rem;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 2.1rem
+    }
+
+    .section4 {
+      position: absolute;
+      width: 1200px;
+      height: 500px;
+      border: 1px solid red;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 18rem;
+    }
+
+    .section4 .title1 {
+      width: 9.34rem;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+    }
+
+    .section4 .title2 {
+      width: 9.23rem;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 2.1rem
+    }
+
+    .section4 .photo {
+      width: 6.6rem;
+      position: absolute;
+      right: -2rem;
+      top: 0;
+    }
+
+    .section4 .pen {
+      width: 5.29rem;
+      position: absolute;
+      right: -2rem;
+      top: -2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="section1">
+      <img src="https://assets.papegames.com/resources/cdn/20240411/bca9364d7cf8f232.jpg" />
+    </div>
+    <div class="section2">
+      <img src="https://assets.papegames.com/resources/cdn/20240413/3af7a81f5c1aa076.jpg" alt="">
+    </div>
+    <div class="section3">
+      <img class="title1 anim1" src="https://assets.papegames.com/resources/cdn/20240413/ee30fba250e964f4.png" />
+      <img class="title2 anim1" src="https://assets.papegames.com/resources/cdn/20240413/7146cc15285f8c4a.png" />
+    </div>
+    <!-- <div class="section4">
+      <img class="title1 anim1" src="https://assets.papegames.com/resources/cdn/20240413/ee30fba250e964f4.png" />
+      <img class="title2 anim1" src="https://assets.papegames.com/resources/cdn/20240413/7146cc15285f8c4a.png" />
+      <img class="photo anim2" src="https://assets.papegames.com/resources/cdn/20240415/bf77955880696a67.png" />
+      <img class="pen anim3" src="https://assets.papegames.com/resources/cdn/20240415/90342878baf875da.png" />
+    </div> -->
+  </div>
+  <script>
+    gsap.from(".section3 img", {
+      scrollTrigger: {
+        trigger: ".section3",
+        markers: true,
+        start: "top bottom", // 默认top bottom(第一个值指的是trigger 第二个值指的是scroller)
+        end: "bottom top",
+        onEnter: () => console.log("onEnter"),
+        onLeave: () => console.log("onLeave"),
+        onEnterBack: () => console.log("onEnterBack"),
+        onLeaveBack: () => console.log("onLeaveBack"),
+        toggleActions: "play none none reset"
+      },
+      y: 40,
+      opacity: 0,
+      stagger: 0.1,
+    });
+  </script>
+</body>
+
+</html>
