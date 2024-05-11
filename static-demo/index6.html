@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./gsap.min.js"></script>
+  <style>
+    .container {
+      width: 400px;
+      display: flex;
+      justify-content: space-between;
+      margin: 100px auto;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>stagger</h1>
+  <div class="container">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+  </div>
+
+  <script>
+    gsap.to(".box", {
+      rotation: 360,
+      stagger: {
+        grid: [3, 3],
+        from: "center",
+        amount: 1.5
+      },
+    })
+  </script>
+  <script>
+
+  </script>
+</body>
+
+</html>
