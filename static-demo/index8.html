@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./gsap.min.js"></script>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>control</h1>
+  <div class="box"></div>
+  <div>
+    <button type="button" id="play">play</button>
+    <button type="button" id="pause">pause</button>
+    <button type="button" id="resume">resume</button>
+    <button type="button" id="reverse">reverse</button>
+    <button type="button" id="restart">restart</button>
+    <button type="button" id="timeScale2">timeScale2</button>
+  </div>
+  <script>
+    const tween = gsap.to('.box', {
+      x: 200,
+      paused: true,
+      onComplete: () => console.log("the tween is complete"),
+      onReverseComplete: () => console.log("the tween is onReverseComplete")
+    })
+
+    document.querySelector("#play").onclick = () => tween.play();
+    document.querySelector("#pause").onclick = () => tween.pause();
+    document.querySelector("#resume").onclick = () => tween.resume();
+    document.querySelector("#reverse").onclick = () => tween.reverse();
+    document.querySelector("#restart").onclick = () => tween.restart();
+    document.querySelector("#timeScale2").onclick = () => tween.timeScale(2);
+  </script>
+</body>
+
+</html>
