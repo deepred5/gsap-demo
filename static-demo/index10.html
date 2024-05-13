@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./gsap.min.js"></script>
+  <script src="./SplitText3.min.js"></script>
+  <style>
+    body {
+      font-family: 'Asap', Arial, Helvetica, sans-serif;
+      color: white;
+      background: black url(//s3-us-west-2.amazonaws.com/s.cdpn.io/16327/texture_bg.jpg) no-repeat 50% 0px;
+      margin: 3% 10% 0 10%;
+      overflow: hidden;
+    }
+
+    #quote {
+      font-size: 44px;
+      line-height: 50px;
+      color: #dedede;
+    }
+
+    button {
+      padding: 10px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <link href='//fonts.googleapis.com/css?family=Asap:400,700' rel='stylesheet' type='text/css'>
+
+  <div id="quote">SplitText makes it easy to break apart the text in an HTML element so that each character, word,
+    and/or line is wrapped in its own div tag.</div>
+
+  <button id="animate">animate</button>
+
+
+
+  <script>
+    /*
+See https://www.greensock.com/splittext/ for details. 
+This demo uses SplitText which is a membership benefit of Club GreenSock, https://www.greensock.com/club/
+*/
+    gsap.registerPlugin(SplitText);
+
+    var tl = gsap.timeline(),
+      mySplitText = new SplitText("#quote", { type: "words,chars" }),
+      chars = mySplitText.chars; //an array of all the divs that wrap each character
+
+    gsap.set("#quote", { perspective: 400 });
+
+    console.log(chars);
+
+    tl.from(chars, {
+      duration: 0.8,
+      opacity: 0,
+      scale: 0,
+      y: 80,
+      rotationX: 180,
+      transformOrigin: "0% 50% -50",
+      ease: "back",
+      stagger: 0.01
+    });
+
+    document.getElementById("animate").onclick = function () {
+      tl.restart();
+    };
+
+  </script>
+
+</body>
+
+</html>
